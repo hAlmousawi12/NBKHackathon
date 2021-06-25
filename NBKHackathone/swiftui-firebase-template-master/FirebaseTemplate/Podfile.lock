@@ -1,0 +1,16 @@
+PODS:
+  - CodableFirebase (0.2.1)
+
+DEPENDENCIES:
+  - CodableFirebase
+
+SPEC REPOS:
+  trunk:
+    - CodableFirebase
+
+SPEC CHECKSUMS:
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
+
+PODFILE CHECKSUM: 675b4c31fa69ffb62e1695b11afa6027e5ff04fd
+
+COCOAPODS: 1.10.1
