@@ -19,7 +19,7 @@ struct ProfileView: View {
                         destination: AddAnotherAccount().environmentObject(FirebaseEnv()),
                         label: {
                             Text("Add Another Account")
-                                .foregroundColor(.theme.blue)
+                                .foregroundColor(Color.theme.blue)
                         })
                     SignOutButton(env: env)
                 }
