@@ -34,6 +34,7 @@ struct AddAnotherAccount: View {
                 self.newUser.budget.expense = Int(self.expense) ?? 0
                 self.newUser.budget.income = Int(self.income) ?? 0
                 env.addAnotherAccount(user: newUser)
+                //TODO .....
             }
             NavigationLink("Don't have an account?", destination: SignUp())
         }

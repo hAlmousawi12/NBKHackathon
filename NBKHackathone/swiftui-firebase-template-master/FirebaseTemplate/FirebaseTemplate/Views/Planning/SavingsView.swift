@@ -52,7 +52,7 @@ extension SavingsView {
         VStack {
             ZStack {
                 Rectangle()
-                    .foregroundColor(saving.numberOfSaving % 2 == 0 ? .theme.orange.opacity(0.8) : .theme.blue.opacity(0.8))
+                    .foregroundColor(saving.numberOfSaving % 2 == 0 ? Color.theme.orange.opacity(0.8) : Color.theme.blue.opacity(0.8))
                     .frame(height: 300)
                     .cornerRadius(35)
                 
@@ -76,7 +76,7 @@ extension SavingsView {
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 110, height: 150)
                     .padding(20)
-                    .background(saving.numberOfSaving % 2 == 0 ? .theme.orange.opacity(0.9) : Color.theme.blue.opacity(0.9))
+                    .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange.opacity(0.9) : Color.theme.blue.opacity(0.9))
                     .cornerRadius(25)
                     .offset(y: -120)
                 
@@ -84,7 +84,7 @@ extension SavingsView {
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 150, height: 150)
                     .padding(20)
-                    .background(saving.numberOfSaving % 2 == 0 ? .theme.orange.opacity(0.8) : Color.theme.blue.opacity(0.8))
+                    .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange.opacity(0.8) : Color.theme.blue.opacity(0.8))
                     .cornerRadius(25)
                     .offset(y: -140)
                 VStack(alignment: .leading) {
@@ -127,7 +127,7 @@ extension SavingsView {
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 70, height: 150)
                 .padding(20)
-                .background(saving.numberOfSaving % 2 == 0 ? .theme.orange : Color.theme.blue)
+                .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange : Color.theme.blue)
                 .cornerRadius(25)
                 .offset(y: -100)
             }
@@ -140,7 +140,7 @@ extension SavingsView {
         VStack {
             HStack {
                 Text("Recent Transaction")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .font(.title2)
                     .bold()
                 
@@ -150,7 +150,7 @@ extension SavingsView {
                     print("seen all")
                 }, label: {
                     Text("See All")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }.padding(.horizontal, 30)
@@ -174,14 +174,14 @@ struct recentTransactions: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
                     Text("Top Up")
-                        .foregroundColor(.theme.text)
+                        .foregroundColor(Color.theme.text)
                         .bold()
                         .font(.title3)
                     
                     Spacer()
                     
                     Text(amount)
-                        .foregroundColor(.theme.green)
+                        .foregroundColor(Color.theme.green)
                 }
                 Text("\(day) . \(time)")
                     .foregroundColor(.secondary)
@@ -189,14 +189,14 @@ struct recentTransactions: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
                     Text("Automatic Saving")
-                        .foregroundColor(.theme.text)
+                        .foregroundColor(Color.theme.text)
                         .bold()
                         .font(.title3)
                     
                     Spacer()
                     
                     Text("$15.00")
-                        .foregroundColor(.theme.green)
+                        .foregroundColor(Color.theme.green)
                 }
                 Text("\(day) . 12.01am")
                     .foregroundColor(.secondary)
@@ -207,7 +207,7 @@ struct recentTransactions: View {
         .padding()
         .background(Color.white)
         .cornerRadius(15)
-        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 0)
+        .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 0)
     }
 }
 

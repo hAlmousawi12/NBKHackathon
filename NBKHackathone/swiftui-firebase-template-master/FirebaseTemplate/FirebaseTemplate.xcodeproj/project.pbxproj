@@ -17,6 +17,7 @@
 		97FA7E6326856ACA00768660 /* SavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA7E6226856ACA00768660 /* SavingsView.swift */; };
 		97FA7E6526856AE700768660 /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA7E6426856AE700768660 /* Saving.swift */; };
 		97FA7E6726859CCC00768660 /* AddAnotherAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA7E6626859CCB00768660 /* AddAnotherAccount.swift */; };
+		B846F0AF26865B390082C6A0 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846F0AE26865B390082C6A0 /* AsyncImage.swift */; };
 		D2C079A2259813E70053EDFD /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C079A1259813E70053EDFD /* MainApp.swift */; };
 		D2C079AD259815F30053EDFD /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C079AC259815F30053EDFD /* SignIn.swift */; };
 		D2C079B2259816BD0053EDFD /* FirebaseEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C079B1259816BD0053EDFD /* FirebaseEnv.swift */; };
@@ -67,6 +68,9 @@
 		D2C2705024662C73005E16A3 /* NetworkingSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2704124662C5A005E16A3 /* NetworkingSignUp.swift */; };
 		D2C2705224662C9A005E16A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2705124662C9A005E16A3 /* User.swift */; };
 		D2C2705724662F3F005E16A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2705624662F3F005E16A3 /* Item.swift */; };
+		D54135402685F48B001D8589 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541353F2685F48B001D8589 /* Video.swift */; };
+		D5FCB45026864C460018F01A /* VideosEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCB44F26864C460018F01A /* VideosEnv.swift */; };
+		D5FCB456268653860018F01A /* VideoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCB455268653860018F01A /* VideoDetails.swift */; };
 		F44A754633CD1CC597E156F9 /* Pods_FirebaseTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46289A53C740F541F362795 /* Pods_FirebaseTemplate.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,7 @@
 		97FA7E6426856AE700768660 /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
 		97FA7E6626859CCB00768660 /* AddAnotherAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnotherAccount.swift; sourceTree = "<group>"; };
 		B1FD124CAB9AE9745E818900 /* Pods-FirebaseTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseTemplate.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseTemplate/Pods-FirebaseTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		B846F0AE26865B390082C6A0 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D2C079A1259813E70053EDFD /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		D2C079AC259815F30053EDFD /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		D2C079B1259816BD0053EDFD /* FirebaseEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEnv.swift; sourceTree = "<group>"; };
@@ -135,6 +140,9 @@
 		D2C2704324662C5A005E16A3 /* NetworkingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingImages.swift; sourceTree = "<group>"; };
 		D2C2705124662C9A005E16A3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D2C2705624662F3F005E16A3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D541353F2685F48B001D8589 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		D5FCB44F26864C460018F01A /* VideosEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosEnv.swift; sourceTree = "<group>"; };
+		D5FCB455268653860018F01A /* VideoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetails.swift; sourceTree = "<group>"; };
 		F46289A53C740F541F362795 /* Pods_FirebaseTemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseTemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,6 +239,7 @@
 			children = (
 				D2C079BD259819FD0053EDFD /* MainView.swift */,
 				974AFAF62685313500261147 /* TabBarView.swift */,
+				D541353E2685F450001D8589 /* Video */,
 				974AFB002685363200261147 /* Planning */,
 				974AFAFF2685362900261147 /* Profile */,
 				974AFAFE2685362200261147 /* Home */,
@@ -246,6 +255,7 @@
 				D2C079B1259816BD0053EDFD /* FirebaseEnv.swift */,
 				D2C079D5259841D10053EDFD /* ItemsEnv.swift */,
 				974AFB01268536BE00261147 /* UserEnv.swift */,
+				D5FCB44F26864C460018F01A /* VideosEnv.swift */,
 			);
 			path = Environments;
 			sourceTree = "<group>";
@@ -393,8 +403,18 @@
 				D2C2705124662C9A005E16A3 /* User.swift */,
 				D2C2705624662F3F005E16A3 /* Item.swift */,
 				97FA7E6426856AE700768660 /* Saving.swift */,
+				B846F0AE26865B390082C6A0 /* AsyncImage.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D541353E2685F450001D8589 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				D541353F2685F48B001D8589 /* Video.swift */,
+				D5FCB455268653860018F01A /* VideoDetails.swift */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,12 +538,15 @@
 				974AFAF72685313500261147 /* TabBarView.swift in Sources */,
 				974AFAF9268531EB00261147 /* Planning.swift in Sources */,
 				D2C079D0259822090053EDFD /* ListItems.swift in Sources */,
+				B846F0AF26865B390082C6A0 /* AsyncImage.swift in Sources */,
 				D2C079C725981C260053EDFD /* Home.swift in Sources */,
 				D2C2705724662F3F005E16A3 /* Item.swift in Sources */,
 				D2C079D9259843330053EDFD /* OptionalState.swift in Sources */,
 				D2C2704B24662C68005E16A3 /* Optional.swift in Sources */,
 				D2C079A2259813E70053EDFD /* MainApp.swift in Sources */,
 				D2C2704924662C68005E16A3 /* Codable.swift in Sources */,
+				D5FCB45026864C460018F01A /* VideosEnv.swift in Sources */,
+				D54135402685F48B001D8589 /* Video.swift in Sources */,
 				D2C2704724662C63005E16A3 /* ValidatePassword.swift in Sources */,
 				974AFAFB2685323900261147 /* ProfileView.swift in Sources */,
 				D2C079B2259816BD0053EDFD /* FirebaseEnv.swift in Sources */,
@@ -541,6 +564,7 @@
 				D2C2705024662C73005E16A3 /* NetworkingSignUp.swift in Sources */,
 				974AFB02268536BE00261147 /* UserEnv.swift in Sources */,
 				97FA7E6326856ACA00768660 /* SavingsView.swift in Sources */,
+				D5FCB456268653860018F01A /* VideoDetails.swift in Sources */,
 				D2C2704524662C63005E16A3 /* ImageLoader.swift in Sources */,
 				D2C2704824662C63005E16A3 /* DateFromatter.swift in Sources */,
 				97AA13B22684FD5200A4F10D /* LiveTalk.swift in Sources */,
@@ -600,6 +624,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -661,6 +686,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -686,9 +712,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebaseTemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 9VCECTYT2E;
+				DEVELOPMENT_TEAM = 5A9Y8RF8TK;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -720,9 +747,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebaseTemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 9VCECTYT2E;
+				DEVELOPMENT_TEAM = 5A9Y8RF8TK;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
