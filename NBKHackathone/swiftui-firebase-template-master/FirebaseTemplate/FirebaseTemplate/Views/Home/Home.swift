@@ -15,7 +15,7 @@ struct SignOutButton: View{
         Button("Signout") {
             env.signOut()
         }
-        .foregroundColor(.theme.red)
+        .foregroundColor(Color.theme.red)
     }
 }
 
@@ -65,7 +65,7 @@ extension Home {
                 
                 Text(userEnv.user.fullName)
                     .font(.title2)
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
             }
             Spacer()
@@ -101,7 +101,7 @@ extension Home {
         HStack {
             Image(systemName: "arrow.down")
                 .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.theme.blue)
+                .foregroundColor(Color.theme.blue)
                 .frame(width: 45, height: 45)
                 .background(Color.theme.secondary)
                 .cornerRadius(10)
@@ -109,13 +109,13 @@ extension Home {
                 Text("Income")
                     .foregroundColor(.secondary)
                 Text("$\(userEnv.totalIncome)")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                     .padding(.leading, 2)
             }
             Spacer()
             Image(systemName: "arrow.up")
-                .foregroundColor(.theme.orange)
+                .foregroundColor(Color.theme.orange)
                 .font(.system(size: 20, weight: .bold))
                 .frame(width: 45, height: 45)
                 .background(Color.theme.secondary)
@@ -124,7 +124,7 @@ extension Home {
                 Text("Expense")
                     .foregroundColor(.secondary)
                 Text("$\(userEnv.totalExpense)")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                     .padding(.leading, 2)
             }
@@ -148,15 +148,15 @@ extension Home {
                     print("added new")
                 }, label: {
                     Text("+ Add New")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }.padding(.horizontal, 30)
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 20) {
-                    itemInWallet(color: .theme.blue, money: "$45.00", category: "Food")
-                    itemInWallet(color: .theme.orange, money: "$150.00", category: "Clothing")
-                    itemInWallet(color: .theme.blue, money: "$60.50", category: "Parking")
+                    itemInWallet(color: Color.theme.blue, money: "$45.00", category: "Food")
+                    itemInWallet(color: Color.theme.orange, money: "$150.00", category: "Clothing")
+                    itemInWallet(color: Color.theme.blue, money: "$60.50", category: "Parking")
                 }.padding(.leading, 30)
             })
         }
@@ -167,13 +167,13 @@ extension Home {
             HStack {
                 Text("Recent Transaction")
                     .bold()
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                 Spacer()
                 Button(action: {
                     print("seen all")
                 }, label: {
                     Text("See All")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }
@@ -185,7 +185,7 @@ extension Home {
             .padding()
             .background(Color.white)
             .cornerRadius(15)
-            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 0)
+            .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 0)
         }.padding(.top, 10)
     }
 }
@@ -203,7 +203,7 @@ struct Transaction: View {
                 .frame(width: 25, height: 25)
             VStack(alignment: .leading) {
                 Text(onWhat)
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                 Text(time)
                     .font(.callout)
@@ -212,7 +212,7 @@ struct Transaction: View {
             }
             Spacer()
             Text(price)
-                .foregroundColor(.theme.red)
+                .foregroundColor(Color.theme.red)
         }
         
     }

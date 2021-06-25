@@ -12,6 +12,7 @@ struct MainApp: App {
                 MainView()
                     .environmentObject(FirebaseEnv())
                     .environmentObject(UserEnv())
+                    .environmentObject(VideoEnv())
                     .accentColor(Color.theme.blue)
             }
         }
