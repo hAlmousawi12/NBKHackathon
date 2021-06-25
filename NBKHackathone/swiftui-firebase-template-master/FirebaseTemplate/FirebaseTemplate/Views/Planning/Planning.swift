@@ -36,7 +36,7 @@ extension Planning {
         VStack {
             Text("Planning")
                 .bold()
-                .foregroundColor(.theme.text)
+                .foregroundColor(Color.theme.text)
                 .font(.title)
                 .padding(.top, 30)
         }
@@ -46,7 +46,7 @@ extension Planning {
         VStack {
             HStack {
                 Text("Wallet")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                     .font(.title2)
                 Spacer()
@@ -54,16 +54,16 @@ extension Planning {
                     print("seen al")
                 }, label: {
                     Text("See All")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }.padding(.horizontal, 30)
             
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack {
-                    ItemInWallet(txt: "Budget", color: .theme.blue, imageName: "budget")
-                    ItemInWallet(txt: "Savings", color: .theme.orange, imageName: "savings")
-                    ItemInWallet(txt: "Events", color: .theme.blue, imageName: "event")
+                    ItemInWallet(txt: "Budget", color: Color.theme.blue, imageName: "budget")
+                    ItemInWallet(txt: "Savings", color: Color.theme.orange, imageName: "savings")
+                    ItemInWallet(txt: "Events", color: Color.theme.blue, imageName: "event")
                 }.padding(.leading, 30)
             })
             
@@ -74,7 +74,7 @@ extension Planning {
         VStack {
             HStack {
                 Text("Savings")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                     .font(.title2)
                 Spacer()
@@ -82,7 +82,7 @@ extension Planning {
                     print("a new saving added")
                 }, label: {
                     Text("+ Add new")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }
@@ -93,25 +93,25 @@ extension Planning {
                         HStack {
                             Image(systemName: "bag")
                                 .font(.title2)
-                                .foregroundColor(saving.numberOfSaving % 2 == 0 ? .theme.lessConstructOrange : .theme.lessConstructBlue)
+                                .foregroundColor(saving.numberOfSaving % 2 == 0 ? Color.theme.lessConstructOrange : Color.theme.lessConstructBlue)
                                 .padding()
                             VStack {
                                 HStack {
                                     Text(saving.name)
-                                        .foregroundColor(.theme.text)
+                                        .foregroundColor(Color.theme.text)
                                         .bold()
                                     Spacer()
                                     Text(saving.savedPrice)
-                                        .foregroundColor(.theme.text)
+                                        .foregroundColor(Color.theme.text)
                                         .bold()
                                 }
                                 ZStack(alignment: .leading) {
                                     Rectangle()
-                                        .foregroundColor(saving.numberOfSaving % 2 == 0 ? .theme.lessConstructOrange : .theme.lessConstructBlue)
+                                        .foregroundColor(saving.numberOfSaving % 2 == 0 ? Color.theme.lessConstructOrange : Color.theme.lessConstructBlue)
                                         .opacity(0.3)
                                         .frame(width: 250, height: 4.0)
                                     Rectangle()
-                                        .foregroundColor(saving.numberOfSaving % 2 == 0 ? .theme.orange : .theme.blue)
+                                        .foregroundColor(saving.numberOfSaving % 2 == 0 ? Color.theme.orange : Color.theme.blue)
                                         .frame(width: CGFloat(250 * (saving.percentage / 100)), height: 4.0)
                                 }
                                 .cornerRadius(4.0)
@@ -121,7 +121,7 @@ extension Planning {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(15)
-                        .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 0)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
                     })
             }
         }
@@ -131,7 +131,7 @@ extension Planning {
         VStack {
             HStack {
                 Text("Budget")
-                    .foregroundColor(.theme.text)
+                    .foregroundColor(Color.theme.text)
                     .bold()
                     .font(.title2)
                 Spacer()
@@ -139,7 +139,7 @@ extension Planning {
                     print("a new saving added")
                 }, label: {
                     Text("+ Add new")
-                        .foregroundColor(.theme.blue)
+                        .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
                 })
             }
@@ -153,20 +153,20 @@ extension Planning {
                 VStack {
                     HStack {
                         Text("Food & Bevweage")
-                            .foregroundColor(.theme.text)
+                            .foregroundColor(Color.theme.text)
                             .bold()
                         Spacer()
                         Text("$125.00")
-                            .foregroundColor(.theme.text)
+                            .foregroundColor(Color.theme.text)
                             .bold()
                     }
                     ZStack(alignment: .leading) {
                         Rectangle()
-                            .foregroundColor(.theme.lessConstructBlue)
+                            .foregroundColor(Color.theme.lessConstructBlue)
                             .opacity(0.3)
                             .frame(width: 250, height: 4.0)
                         Rectangle()
-                            .foregroundColor(.theme.blue)
+                            .foregroundColor(Color.theme.blue)
                             .frame(width: CGFloat(250 * (75.0 / 100)), height: 4.0)
                     }
                     .cornerRadius(4.0)
@@ -176,7 +176,7 @@ extension Planning {
             .padding()
             .background(Color.white)
             .cornerRadius(15)
-            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 0)
+            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
         }
     }
 }

@@ -22,6 +22,10 @@ struct TabBarView: View {
             ProfileView().environmentObject(FirebaseEnv()).tabItem {
                 Image(systemName: "person.fill")
             }
+            
+            Video().tabItem {
+                Image(systemName: "video.fill")
+            }
         }
     }
 }
