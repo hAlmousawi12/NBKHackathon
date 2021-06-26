@@ -72,18 +72,14 @@ struct SignUp: View {
                               text: $password)
                 }   .padding()
                 .background(Capsule().fill(Color.white))
-                NavigationLink(destination: TabBarView()
-                                .environmentObject(FirebaseEnv())
-                                .environmentObject(UserEnv()), tag: 1, selection: $selection) {
-                    Button("Sign up"){
+                NavigationLink(destination: TabBarView().environmentObject(FirebaseEnv()).environmentObject(UserEnv()), tag: 1, selection: $selection) {
+                    Button("Sign up") {
                         self.user.budget.balance = Int(self.balance) ?? 0
                         self.user.budget.expense = Int(self.expense) ?? 0
                         self.user.budget.income = Int(self.income) ?? 0
+                        
                         env.signUp(user: user, password: password)
-                        env.signedIn = true
-                        if env.signedIn {
-                            selection = 1
-                        }
+                        if env.signedIn { selection = 1 }
                     }
                     //old:
 //                    .padding(.top, 30.0)
