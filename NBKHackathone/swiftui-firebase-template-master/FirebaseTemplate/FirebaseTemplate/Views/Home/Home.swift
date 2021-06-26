@@ -16,7 +16,13 @@ struct SignOutButton: View{
             env.signOut()
             env.signedIn = false
         }
-        .foregroundColor(Color.theme.red)
+        .foregroundColor(.white)
+        .font(.title2)
+        .frame(width: 300, height: 50)
+        .background(Color.theme.red)
+        .cornerRadius(15)
+        .shadow(color: .theme.red.opacity(0.3), radius: 10, x: 0, y: 0)
+        .padding()
     }
 }
 

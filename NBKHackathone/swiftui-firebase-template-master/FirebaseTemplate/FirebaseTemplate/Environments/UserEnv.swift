@@ -20,6 +20,7 @@ class UserEnv: ObservableObject {
     @Published var SavingsCount = 0
     @Published var savings: [Saving] = []
     @Published var budgets: [Saving] = []
+    @Published var otherUsers: [User] = []
     let path = "users/\(Networking.getUserId() ?? "")"
     
     func getUser() {
@@ -31,6 +32,7 @@ class UserEnv: ObservableObject {
     func getOtherUsersData() {
         
         Networking.getListOf(COLLECTION_NAME: "\(path)/otherAccounts") { (users: [User]) in
+            self.otherUsers = users
             self.totalExpense = self.user.budget.expense
             self.totalBalance = self.user.budget.balance
             self.totalIncome = self.user.budget.income

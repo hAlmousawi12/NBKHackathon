@@ -5,13 +5,15 @@ import class Firebase.User
 typealias FirebaseUser = Firebase.User
 
 
-struct User: Codable {
+struct User: Codable, Hashable {
+    
     var fullName: String = ""
     var email: String = ""
     var budget: Budget = Budget()
+    
 }
 
-struct Budget: Codable {
+struct Budget: Codable, Hashable {
     var balance: Int = 0 
     var income: Int = 0
     var expense: Int = 0

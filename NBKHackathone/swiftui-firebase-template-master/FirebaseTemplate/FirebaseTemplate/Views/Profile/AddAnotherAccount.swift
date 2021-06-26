@@ -17,24 +17,27 @@ struct AddAnotherAccount: View {
     @State private var balance = ""
     @State private var income = ""
     @State private var expense = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack(spacing: 15){
-            TextField("E-mail", text: $newUser.email)
             
-            TextField("enter your balance", text: $balance)
+            TextField("Enter your full name", text: $newUser.fullName)
+            TextField("enter your E-mail", text: $newUser.email)
+            TextField("Enter your balance", text: $balance)
                 .keyboardType(.numberPad)
-            TextField("enter your income", text: $income)
+            TextField("Enter your income", text: $income)
                 .keyboardType(.numberPad)
-            TextField("enter your expense", text: $expense)
+            TextField("Enter your expense", text: $expense)
                 .keyboardType(.numberPad)
             
             SecureField("password", text: $password)
             Button("Add another account") {
+                
                 self.newUser.budget.balance = Int(self.balance) ?? 0
                 self.newUser.budget.expense = Int(self.expense) ?? 0
                 self.newUser.budget.income = Int(self.income) ?? 0
                 env.addAnotherAccount(user: newUser)
-                //TODO .....
+                self.presentationMode.wrappedValue.dismiss()
             }
             NavigationLink("Don't have an account?", destination: SignUp())
         }
