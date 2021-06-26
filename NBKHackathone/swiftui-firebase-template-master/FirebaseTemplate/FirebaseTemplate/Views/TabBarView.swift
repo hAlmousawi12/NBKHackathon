@@ -30,7 +30,8 @@ struct TabBarView: View {
                 }
                 
             }
-        }.navigationBarHidden(true)
+        }
+        .navigationBarHidden(true)
     }
 }
 

@@ -245,13 +245,6 @@
 			path = Planning;
 			sourceTree = "<group>";
 		};
-		978C956F2686E53800A53050 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animation;
-			sourceTree = "<group>";
-		};
 		97AA13B02684FD3E00A4F10D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,7 +322,6 @@
 			children = (
 				D2C079A1259813E70053EDFD /* MainApp.swift */,
 				972796EF26846BCB00C0EE3F /* GoogleService-Info.plist */,
-				978C956F2686E53800A53050 /* Animation */,
 				D2C079A9259815BD0053EDFD /* Views */,
 				D2C079B0259816AA0053EDFD /* Environments */,
 				D2C2705324662CAA005E16A3 /* Models */,
