@@ -85,9 +85,12 @@ struct SignUp: View {
                             selection = 1
                         }
                     }
-                    .modifier(SignInModifier())
-                    .padding(.top, 30.0)
+                    //old:
+//                    .padding(.top, 30.0)
+//                    .modifier(SignInModifier())
                 }
+//                .padding(.top, 30.0)
+//                .modifier(SignInModifier())
                 
                 NavigationLink("Already an account?", destination: SignIn())
                     .padding(.top, 10)

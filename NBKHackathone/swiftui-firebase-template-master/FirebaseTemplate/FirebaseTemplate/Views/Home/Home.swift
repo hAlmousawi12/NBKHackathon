@@ -59,6 +59,7 @@ struct Home: View {
         }
         .navigationBarHidden(true)
         .onAppear {
+            print("Hello, idkkkkkk 👾❤️")
             userEnv.getUser()
             userEnv.getOtherUsersData()
             userEnv.loadWallet()

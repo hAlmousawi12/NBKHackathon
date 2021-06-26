@@ -14,6 +14,7 @@ struct MainView: View {
         if env.signedIn {
             TabBarView()
                 .environmentObject(FirebaseEnv())
+                .environmentObject(VideoEnv())
                 .environmentObject(UserEnv())
         }
         else {

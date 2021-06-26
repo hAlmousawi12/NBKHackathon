@@ -14,7 +14,7 @@ class FirebaseEnv: ObservableObject{
     
     func signIn(user: SignInCredentials, success: @escaping (String) -> Void,  fail: ((Error?) -> Void)?){
         Networking.signIn(user: user, success: { uid in
-            self.signedIn = true
+//            self.signedIn = true
             success(uid)
         }, fail: fail)
     }
@@ -26,7 +26,7 @@ class FirebaseEnv: ObservableObject{
     
     func signUp(user: User, password: String){
         Networking.signUp(user: user, password: password) { (uid) in
-            self.signedIn = true
+//            self.signedIn = true
         }
     }
     

@@ -21,7 +21,7 @@ struct TabBarView: View {
                     Image(systemName: "creditcard.fill")
                 }
                 
-                Video().environmentObject(ItemsEnv()).tabItem {
+                Video().environmentObject(VideoEnv()).tabItem {
                     Image(systemName: "video.fill")
                 }
                 
