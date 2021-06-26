@@ -10,17 +10,19 @@ import SwiftUI
 
 struct AuthenticationView: View {
     var body: some View {
+        NavigationView {
             VStack{
-                NavigationLink(
-                    destination: SignIn().environmentObject(FirebaseEnv()),
-                    label: {Text("Sign in").modifier(SignInModifier())}
-                )
-                NavigationLink(
-                    destination: SignUp().environmentObject(FirebaseEnv()),
-                    label: {Text("Create an account")}
-                )
-            }
+                    NavigationLink(
+                        destination: SignIn().environmentObject(FirebaseEnv()),
+                        label: {Text("Sign in").modifier(SignInModifier())}
+                    )
+                    NavigationLink(
+                        destination: SignUp().environmentObject(FirebaseEnv()),
+                        label: {Text("Create an account")}
+                    )
+                }
             .navigationTitle("Home")
+        }
     }
 }
 
@@ -30,7 +32,7 @@ struct SignInModifier: ViewModifier{
             .foregroundColor(.white)
             .padding()
             .frame(minWidth: 100, idealWidth: 200, maxWidth: .infinity,  alignment: .center)
-            .background(Color.blue)
+            .background(Color.theme.blue)
             .cornerRadius(10)
             .padding(.horizontal)
     }

@@ -14,8 +14,10 @@ struct AddSaving: View {
     @State var price = ""
     @State var daysLeft = ""
     @State var savedPrice = ""
-    @State var percentage = ""
+    @State var percentage = 0.0
     @State var i = -1
+    @State var selection: Int? = nil
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
@@ -23,23 +25,37 @@ struct AddSaving: View {
                 
                 TextField("Enter the name", text: $name)
                 TextField("Enter the price", text: $price)
+                    .keyboardType(.numberPad)
                 TextField("Enter the days", text: $daysLeft)
+                    .keyboardType(.numberPad)
                 TextField("Enter how much you saved", text: $savedPrice)
-                TextField("Enter the percentage", text: $percentage)
                     .keyboardType(.numberPad)
                 
-                Button("Add to savings") {
-                    env.AddToSavings(item: Saving(name: name, price: price, percentage: Double(percentage) ?? 0.0, daysLeft: daysLeft, savedPrice: savedPrice, numberOfSaving: i))
-                }
-                .frame(width: 250, height: 50)
-                .background(Color.theme.blue)
-                .foregroundColor(.white)
-                .cornerRadius(15)
-                .shadow(color: .theme.blue.opacity(0.3), radius: 10, x: 0, y: 0)
                 
+                        Button("Add to wishlist") {
+                            percentage = Double((Double(savedPrice) ?? 0.0) / (Double(price) ?? 1.0) * 100)
+                            
+                            if (Double(savedPrice) ?? 0.0) < (Double(price) ?? 0.0) {
+                                self.presentationMode.wrappedValue.dismiss()
+                                env.AddToSavings(item: Saving(name: name, price: price, percentage: percentage, daysLeft: daysLeft, savedPrice: savedPrice, numberOfSaving: i))
+                            } else {
+                                env.alertShown = true
+                                env.alertMessage = "The amount of the savings is higher than the price"
+                            }
+                        }
+                        .frame(width: 250, height: 50)
+                        .background(Color.theme.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                        .shadow(color: .theme.blue.opacity(0.3), radius: 10, x: 0, y: 0)
             }.padding(.horizontal, 30)
-        }.onAppear { i += 1 }
+        }
+        .alert(isPresented: $env.alertShown, content: {
+            Alert(title: Text(env.alertMessage), dismissButton: .default(Text("Okay!")))
+        })
+        .onAppear { i += 1 }
     }
+    
 }
 
 

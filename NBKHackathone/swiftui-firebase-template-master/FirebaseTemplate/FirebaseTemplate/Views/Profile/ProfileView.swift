@@ -14,20 +14,15 @@ struct ProfileView: View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
             VStack {
-                Form {
-                    NavigationLink(
-                        destination: AddAnotherAccount().environmentObject(FirebaseEnv()),
-                        label: {
-                            Text("Add Another Account")
-                                .foregroundColor(Color.theme.blue)
-                        })
-                    SignOutButton(env: env)
-                }
-            }
-        }.navigationBarHidden(true)
-        
+                
+                SignOutButton(env: env)
+            }.navigationBarHidden(true)
+            
+        }
     }
 }
+
+//extension ProfileView: 
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

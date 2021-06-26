@@ -14,6 +14,7 @@ struct AddToWallet: View {
     @State var category = ""
     @State var selection = 1
     var selected = ["Saving", "Budget"]
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
@@ -35,6 +36,7 @@ struct AddToWallet: View {
                 }
                 
                 Button("Add to my wallet") {
+                    self.presentationMode.wrappedValue.dismiss()
                     env.AddToWallet(item: Wallet(price: Double(price) ?? 0.0, category: category, isSaving: selection == 1 ))
                 }
                 .frame(width: 250, height: 50)

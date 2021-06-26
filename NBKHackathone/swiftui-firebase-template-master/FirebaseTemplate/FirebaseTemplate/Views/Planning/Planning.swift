@@ -18,7 +18,7 @@ struct Planning: View {
                     title
                     Spacer()
                     VStack(spacing: 40) {
-                        wallet
+//                        wallet
                         
                         Group {
                             savings
@@ -88,7 +88,7 @@ extension Planning {
     private var savings: some View {
         VStack {
             HStack {
-                Text("Savings")
+                Text("Wishlist")
                     .foregroundColor(Color.theme.text)
                     .bold()
                     .font(.title2)

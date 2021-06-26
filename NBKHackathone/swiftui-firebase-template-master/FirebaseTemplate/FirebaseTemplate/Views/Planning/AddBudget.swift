@@ -14,8 +14,9 @@ struct AddBudget: View {
     @State var price = ""
     @State var daysLeft = ""
     @State var savedPrice = ""
-    @State var percentage = ""
     @State var i = -1
+    @State var percentage = 0.0
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
@@ -24,13 +25,23 @@ struct AddBudget: View {
                 
                 TextField("Enter the name", text: $name)
                 TextField("Enter the price", text: $price)
+                    .keyboardType(.numberPad)
                 TextField("Enter the days", text: $daysLeft)
+                    .keyboardType(.numberPad)
                 TextField("Enter how much you saved", text: $savedPrice)
-                TextField("Enter the percentage", text: $percentage)
                     .keyboardType(.numberPad)
                 
                 Button("Add to Budgets") {
-                    env.AddToBudgetss(item: Saving(name: name, price: price, percentage: Double(percentage) ?? 0.0, daysLeft: daysLeft, savedPrice: savedPrice, numberOfSaving: i))
+                    
+                    percentage = Double((Double(savedPrice) ?? 0.0) / (Double(price) ?? 1.0) * 100)
+                    
+                    if (Double(savedPrice) ?? 0.0) < (Double(price) ?? 0.0) {
+                        self.presentationMode.wrappedValue.dismiss()
+                        env.AddToBudgetss(item: Saving(name: name, price: price, percentage: percentage, daysLeft: daysLeft, savedPrice: savedPrice, numberOfSaving: i))
+                    } else {
+                        env.alertShown = true
+                        env.alertMessage = "The amount of the savings is higher than the price"
+                    }
                 }
                 .frame(width: 250, height: 50)
                 .background(Color.theme.blue)
@@ -39,7 +50,9 @@ struct AddBudget: View {
                 .shadow(color: .theme.blue.opacity(0.3), radius: 10, x: 0, y: 0)
                 
             }.padding(.horizontal, 30)
-        }
+        }.alert(isPresented: $env.alertShown, content: {
+            Alert(title: Text(env.alertMessage), dismissButton: .default(Text("Okay!")))
+        })
     }
 }
 

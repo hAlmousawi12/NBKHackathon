@@ -78,13 +78,13 @@ class UserEnv: ObservableObject {
     }
     
     func loadSavings() {
-        Networking.getListOf(COLLECTION_NAME: "\(path)/saving") { (saving: [Saving]) in
+        Networking.getListOf(COLLECTION_NAME: "\(path)/wishlist") { (saving: [Saving]) in
             self.savings = saving
         }
     }
     
     func AddToSavings(item: Saving) {
-        Networking.createItem(item, inCollection: "\(path)/saving") {
+        Networking.createItem(item, inCollection: "\(path)/wishlist") {
             self.showAlert(alertType: .success)
         } fail: { err in
             self.showAlert(alertType: .fail)
