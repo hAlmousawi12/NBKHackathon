@@ -14,6 +14,7 @@ struct SignOutButton: View{
     var body: some View{
         Button("Signout") {
             env.signOut()
+            env.signedIn = false
         }
         .foregroundColor(Color.theme.red)
     }
@@ -21,6 +22,9 @@ struct SignOutButton: View{
 
 struct Home: View {
     @EnvironmentObject var userEnv: UserEnv
+    @State var viewState = CGSize.zero
+    @State var showContent = false
+    @State var showProfile = false
     var body: some View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
@@ -45,6 +49,12 @@ struct Home: View {
         .onAppear {
             userEnv.getUser()
             userEnv.getOtherUsersData()
+            userEnv.loadWallet()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                userEnv.getUser()
+                userEnv.getOtherUsersData()
+                userEnv.loadWallet()
+            }
         }
     }
 }
@@ -64,9 +74,9 @@ extension Home {
                     .foregroundColor(.secondary)
                 
                 Text(userEnv.user.fullName)
-                    .font(.title2)
-                    .foregroundColor(Color.theme.text)
+                    .foregroundColor(.theme.text)
                     .bold()
+                    .font(.title2)
             }
             Spacer()
             Image(systemName: "bell.fill")
@@ -133,32 +143,38 @@ extension Home {
     }
     
     private var wallet: some View {
+        //        GeometryReader { geometry in
         VStack {
             HStack {
                 VStack(alignment: .leading) {
                     Text("Your Wallet")
                         .bold()
-                    Text("2 Budget, 1 Savings")
+                    Text("\(userEnv.budgetsCount) Budget, \(userEnv.SavingsCount) Savings")
                         .foregroundColor(.secondary)
                         .font(.footnote)
                         .padding(.leading, 2)
                 }
                 Spacer()
-                Button(action: {
-                    print("added new")
-                }, label: {
+                NavigationLink(destination: AddToWallet().environmentObject(UserEnv())) {
                     Text("+ Add New")
                         .foregroundColor(Color.theme.blue)
                         .fontWeight(.semibold)
-                })
+                }
             }.padding(.horizontal, 30)
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 20) {
-                    itemInWallet(color: Color.theme.blue, money: "$45.00", category: "Food")
-                    itemInWallet(color: Color.theme.orange, money: "$150.00", category: "Clothing")
-                    itemInWallet(color: Color.theme.blue, money: "$60.50", category: "Parking")
-                }.padding(.leading, 30)
+                    ForEach(userEnv.walletItems, id: \.self) { item in
+                        itemInWallet(color: item.isSaving ? .theme.orange : .theme.blue, money: "$\(item.price)", category: item.category)
+                        //                                .rotation3DEffect(Angle(degrees:
+                        //                                                            Double(UIScreen.main.bounds.frame(in: .global).minX - 30) / -20
+                        //                                ), axis: (x: 0, y: 10, z: 0))
+                    }
+                }
+                .padding(.leading, 30)
+                
             })
+            //            }
+            //            Spacer()
         }
     }
     
@@ -169,13 +185,13 @@ extension Home {
                     .bold()
                     .foregroundColor(Color.theme.text)
                 Spacer()
-                Button(action: {
-                    print("seen all")
-                }, label: {
-                    Text("See All")
-                        .foregroundColor(Color.theme.blue)
-                        .fontWeight(.semibold)
-                })
+                //                Button(action: {
+                //                    print("seen all")
+                //                }, label: {
+                //                    Text("See All")
+                //                        .foregroundColor(Color.theme.blue)
+                //                        .fontWeight(.semibold)
+                //                })
             }
             VStack(spacing: 20) {
                 Transaction(onWhat: "Food & Beverage", time: "Today . Makan Bakso", price: "-$15.00", imageName: "food-orange")

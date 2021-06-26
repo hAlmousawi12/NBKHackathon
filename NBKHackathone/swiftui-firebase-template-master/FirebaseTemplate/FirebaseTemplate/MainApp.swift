@@ -8,13 +8,11 @@ struct MainApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                MainView()
-                    .environmentObject(FirebaseEnv())
-                    .environmentObject(UserEnv())
-                    .environmentObject(VideoEnv())
-                    .accentColor(Color.theme.blue)
-            }
+            MainView()
+                .environmentObject(FirebaseEnv())
+                .environmentObject(UserEnv())
+                .environmentObject(VideoEnv())
+                .accentColor(Color.theme.blue)
         }
     }
 }

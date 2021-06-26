@@ -11,12 +11,12 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var env: FirebaseEnv
     var body: some View {
-        if env.signedIn{
+        if env.signedIn {
             TabBarView()
                 .environmentObject(FirebaseEnv())
                 .environmentObject(UserEnv())
         }
-        else{
+        else {
             AuthenticationView()
         }
     }

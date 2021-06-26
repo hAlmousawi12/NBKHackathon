@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Saving: Hashable {
-    var name: String
-    var price: String
-    var percentage: Double
-    var daysLeft: String
-    var savedPrice: String
-    var numberOfSaving: Int
+struct Saving: Hashable, Codable {
+    var name: String = ""
+    var price: String = ""
+    var percentage: Double = 0.0
+    var daysLeft: String = ""
+    var savedPrice: String = ""
+    var numberOfSaving: Int = 0
 }
 
 

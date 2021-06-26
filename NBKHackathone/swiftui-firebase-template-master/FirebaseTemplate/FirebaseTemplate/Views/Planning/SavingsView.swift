@@ -11,7 +11,10 @@ import SwiftUI
 struct SavingsView: View {
     var saving: Saving
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @State var viewState = CGSize.zero
+    @State var bottomState = CGSize.zero
+    @State var showFull = false
+    @State var show = false
     var body: some View {
         ZStack {
             Color.theme.bg
@@ -26,8 +29,6 @@ struct SavingsView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton, trailing: right)
     }
-    
-    
 }
 
 extension SavingsView {
@@ -70,6 +71,12 @@ extension SavingsView {
                 .offset(y: -80)
                 .padding(.horizontal, 30)
             }
+            .blur(radius: show ? 20 : 0)
+            .animation(
+            Animation
+                .default
+                .delay(0.1)
+    )
             
             ZStack {
                 VStack{}
@@ -79,6 +86,8 @@ extension SavingsView {
                     .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange.opacity(0.9) : Color.theme.blue.opacity(0.9))
                     .cornerRadius(25)
                     .offset(y: -120)
+                    .offset(x: viewState.width, y: viewState.height)
+                    .animation(.easeInOut(duration: 0.3))
                 
                 VStack{}
                     .foregroundColor(.white)
@@ -87,6 +96,8 @@ extension SavingsView {
                     .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange.opacity(0.8) : Color.theme.blue.opacity(0.8))
                     .cornerRadius(25)
                     .offset(y: -140)
+                    .offset(x: viewState.width, y: viewState.height)
+                    .animation(.easeInOut(duration: 0.5))
                 VStack(alignment: .leading) {
                     Text(saving.name)
                         .bold()
@@ -98,7 +109,9 @@ extension SavingsView {
                         
                         Spacer()
                         
-                        Text("\(saving.percentage)%")
+//                        Text("\(saving.percentage)%")
+                        
+                        Text("\(String(format: "%.2f", saving.percentage))%")
                         
                     }
                     //line
@@ -113,15 +126,15 @@ extension SavingsView {
                     }
                     .cornerRadius(4.0)
                     HStack(spacing: 3) {
-                        Text(saving.savedPrice)
+                        Text("$\(saving.savedPrice)")
                             .font(.title2)
                             .bold()
                         
-                        Text("of \(saving.price)")
+                        Text("of $\(saving.price)")
                         
                         Spacer()
                         
-                        Text(saving.daysLeft)
+                        Text("\(saving.daysLeft) days left")
                     }
                 }
                 .foregroundColor(.white)
@@ -130,6 +143,18 @@ extension SavingsView {
                 .background(saving.numberOfSaving % 2 == 0 ? Color.theme.orange : Color.theme.blue)
                 .cornerRadius(25)
                 .offset(y: -100)
+                .offset(x: viewState.width, y: viewState.height)
+                .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
+                .gesture(
+                    DragGesture().onChanged { value in
+                        self.viewState = value.translation
+                        self.show = true
+                    }
+                    .onEnded { value in
+                        self.viewState = .zero
+                        self.show = false
+                    }
+                )
             }
             
             Spacer()
@@ -161,6 +186,12 @@ extension SavingsView {
                 recentTransactions(amount: "$50.00", time: "10.30", day: "4 days ago")
             }
         }
+        .blur(radius: show ? 20 : 0)
+        .animation(
+        Animation
+            .default
+            .delay(0.1)
+)
     }
     
 }
@@ -213,6 +244,6 @@ struct recentTransactions: View {
 
 struct SavingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SavingsView(saving: Saving(name: "iPhone 11 Pro Max", price: "$1249.00", percentage: 56.0, daysLeft: "19 Days Left", savedPrice: "$545.00", numberOfSaving: 1))
+        SavingsView(saving: Saving(name: "iPhone 11 Pro Max", price: "1249.00", percentage: 56.0, daysLeft: "19", savedPrice: "545.00", numberOfSaving: 1))
     }
 }

@@ -15,6 +15,11 @@ class UserEnv: ObservableObject {
     @Published var totalIncome = 0
     @Published var alertShown = false
     @Published var alertMessage = ErrorMessages.none.message
+    @Published var walletItems: [Wallet] = []
+    @Published var budgetsCount = 0
+    @Published var SavingsCount = 0
+    @Published var savings: [Saving] = []
+    @Published var budgets: [Saving] = []
     let path = "users/\(Networking.getUserId() ?? "")"
     
     func getUser() {
@@ -26,6 +31,9 @@ class UserEnv: ObservableObject {
     func getOtherUsersData() {
         
         Networking.getListOf(COLLECTION_NAME: "\(path)/otherAccounts") { (users: [User]) in
+            self.totalExpense = self.user.budget.expense
+            self.totalBalance = self.user.budget.balance
+            self.totalIncome = self.user.budget.income
             for i in users {
                 self.totalBalance += i.budget.balance
                 self.totalIncome += i.budget.income
@@ -43,6 +51,60 @@ class UserEnv: ObservableObject {
             self.showAlert(alertType: .fail)
             
         }
+    }
+    
+    func loadWallet() {
+        Networking.getListOf(COLLECTION_NAME: "\(path)/wallet") { (items: [Wallet]) in
+            self.walletItems = items
+            self.SavingsCount = 0
+            self.budgetsCount = 0
+            for i in items {
+                if i.isSaving {
+                    self.SavingsCount += 1
+                } else {
+                    self.budgetsCount += 1
+                }
+            }
+        }
+    }
+    
+    func AddToWallet(item: Wallet) {
+        Networking.createItem(item, inCollection: "\(path)/wallet") {
+            self.showAlert(alertType: .success)
+        } fail: { err in
+            self.showAlert(alertType: .fail)
+        }
+
+    }
+    
+    func loadSavings() {
+        Networking.getListOf(COLLECTION_NAME: "\(path)/saving") { (saving: [Saving]) in
+            self.savings = saving
+        }
+    }
+    
+    func AddToSavings(item: Saving) {
+        Networking.createItem(item, inCollection: "\(path)/saving") {
+            self.showAlert(alertType: .success)
+        } fail: { err in
+            self.showAlert(alertType: .fail)
+        }
+
+    }
+    
+    func loadBudgets() {
+        Networking.getListOf(COLLECTION_NAME: "\(path)/budgett") { (budgets: [Saving]) in
+            self.budgets = budgets
+        }
+    }
+    
+    func AddToBudgetss(item: Saving) {
+        Networking.createItem(item, inCollection: "\(path)/budgett") {
+            self.showAlert(alertType: .success)
+        } fail: { err in
+            self.showAlert(alertType: .fail)
+        }
+
     }
     
     enum ErrorMessages{

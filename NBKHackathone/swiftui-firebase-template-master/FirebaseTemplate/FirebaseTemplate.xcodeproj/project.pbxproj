@@ -13,6 +13,10 @@
 		974AFAFB2685323900261147 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFAFA2685323900261147 /* ProfileView.swift */; };
 		974AFAFD268534DF00261147 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFAFC268534DF00261147 /* Color.swift */; };
 		974AFB02268536BE00261147 /* UserEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFB01268536BE00261147 /* UserEnv.swift */; };
+		977DC60726868739005D88CB /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC60626868739005D88CB /* Wallet.swift */; };
+		977DC60926868C72005D88CB /* AddToWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC60826868C72005D88CB /* AddToWallet.swift */; };
+		977DC60B26869798005D88CB /* Add saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC60A26869798005D88CB /* Add saving.swift */; };
+		977DC60D2686AD4E005D88CB /* AddBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC60C2686AD4E005D88CB /* AddBudget.swift */; };
 		97AA13B22684FD5200A4F10D /* LiveTalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AA13B12684FD5200A4F10D /* LiveTalk.swift */; };
 		97FA7E6326856ACA00768660 /* SavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA7E6226856ACA00768660 /* SavingsView.swift */; };
 		97FA7E6526856AE700768660 /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA7E6426856AE700768660 /* Saving.swift */; };
@@ -82,6 +86,10 @@
 		974AFAFA2685323900261147 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		974AFAFC268534DF00261147 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		974AFB01268536BE00261147 /* UserEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEnv.swift; sourceTree = "<group>"; };
+		977DC60626868739005D88CB /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		977DC60826868C72005D88CB /* AddToWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWallet.swift; sourceTree = "<group>"; };
+		977DC60A26869798005D88CB /* Add saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Add saving.swift"; sourceTree = "<group>"; };
+		977DC60C2686AD4E005D88CB /* AddBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudget.swift; sourceTree = "<group>"; };
 		97AA13B12684FD5200A4F10D /* LiveTalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTalk.swift; sourceTree = "<group>"; };
 		97FA7E6226856ACA00768660 /* SavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsView.swift; sourceTree = "<group>"; };
 		97FA7E6426856AE700768660 /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
@@ -204,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C079C625981C260053EDFD /* Home.swift */,
+				977DC60826868C72005D88CB /* AddToWallet.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -221,9 +230,18 @@
 			isa = PBXGroup;
 			children = (
 				974AFAF8268531EB00261147 /* Planning.swift */,
+				977DC60C2686AD4E005D88CB /* AddBudget.swift */,
 				97FA7E6226856ACA00768660 /* SavingsView.swift */,
+				977DC60A26869798005D88CB /* Add saving.swift */,
 			);
 			path = Planning;
+			sourceTree = "<group>";
+		};
+		978C956F2686E53800A53050 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		97AA13B02684FD3E00A4F10D /* Tests */ = {
@@ -303,6 +321,7 @@
 			children = (
 				D2C079A1259813E70053EDFD /* MainApp.swift */,
 				972796EF26846BCB00C0EE3F /* GoogleService-Info.plist */,
+				978C956F2686E53800A53050 /* Animation */,
 				D2C079A9259815BD0053EDFD /* Views */,
 				D2C079B0259816AA0053EDFD /* Environments */,
 				D2C2705324662CAA005E16A3 /* Models */,
@@ -401,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C2705124662C9A005E16A3 /* User.swift */,
+				977DC60626868739005D88CB /* Wallet.swift */,
 				D2C2705624662F3F005E16A3 /* Item.swift */,
 				97FA7E6426856AE700768660 /* Saving.swift */,
 				B846F0AE26865B390082C6A0 /* AsyncImage.swift */,
@@ -537,12 +557,15 @@
 				D2C079BE259819FD0053EDFD /* MainView.swift in Sources */,
 				974AFAF72685313500261147 /* TabBarView.swift in Sources */,
 				974AFAF9268531EB00261147 /* Planning.swift in Sources */,
+				977DC60B26869798005D88CB /* Add saving.swift in Sources */,
 				D2C079D0259822090053EDFD /* ListItems.swift in Sources */,
 				B846F0AF26865B390082C6A0 /* AsyncImage.swift in Sources */,
+				977DC60726868739005D88CB /* Wallet.swift in Sources */,
 				D2C079C725981C260053EDFD /* Home.swift in Sources */,
 				D2C2705724662F3F005E16A3 /* Item.swift in Sources */,
 				D2C079D9259843330053EDFD /* OptionalState.swift in Sources */,
 				D2C2704B24662C68005E16A3 /* Optional.swift in Sources */,
+				977DC60926868C72005D88CB /* AddToWallet.swift in Sources */,
 				D2C079A2259813E70053EDFD /* MainApp.swift in Sources */,
 				D2C2704924662C68005E16A3 /* Codable.swift in Sources */,
 				D5FCB45026864C460018F01A /* VideosEnv.swift in Sources */,
@@ -558,6 +581,7 @@
 				D2C079CC259822010053EDFD /* AddItem.swift in Sources */,
 				D2C079B6259818A20053EDFD /* SignUp.swift in Sources */,
 				D2C2705224662C9A005E16A3 /* User.swift in Sources */,
+				977DC60D2686AD4E005D88CB /* AddBudget.swift in Sources */,
 				D2C079C225981BDE0053EDFD /* AuthenticationView.swift in Sources */,
 				D2C079AD259815F30053EDFD /* SignIn.swift in Sources */,
 				97FA7E6726859CCC00768660 /* AddAnotherAccount.swift in Sources */,
@@ -712,7 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebaseTemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 5A9Y8RF8TK;
+				DEVELOPMENT_TEAM = C89Y3B6NMY;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = arm64;
@@ -747,7 +771,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebaseTemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 5A9Y8RF8TK;
+				DEVELOPMENT_TEAM = C89Y3B6NMY;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = arm64;

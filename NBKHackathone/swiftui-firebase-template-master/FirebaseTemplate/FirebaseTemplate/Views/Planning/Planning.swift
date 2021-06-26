@@ -9,23 +9,31 @@
 import SwiftUI
 
 struct Planning: View {
+    @EnvironmentObject var env: UserEnv
     var body: some View {
         ZStack {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
-            VStack {
-                title
-                Spacer()
-                VStack(spacing: 40) {
-                    wallet
-                    
-                    Group {
-                        savings
-                        budget
-                    }.padding(.horizontal, 30)
+            ScrollView {
+                VStack {
+                    title
+                    Spacer()
+                    VStack(spacing: 40) {
+                        wallet
+                        
+                        Group {
+                            savings
+                            budget
+                        }.padding(.horizontal, 30)
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
-        }.navigationBarHidden(true)
+        }
+        .navigationBarHidden(true)
+        .onAppear {
+            env.loadSavings()
+            env.loadBudgets()
+        }
     }
 }
 
@@ -43,31 +51,38 @@ extension Planning {
     }
     
     private var wallet: some View {
-        VStack {
-            HStack {
-                Text("Wallet")
-                    .foregroundColor(Color.theme.text)
-                    .bold()
-                    .font(.title2)
-                Spacer()
-                Button(action: {
-                    print("seen al")
-                }, label: {
-                    Text("See All")
-                        .foregroundColor(Color.theme.blue)
-                        .fontWeight(.semibold)
-                })
-            }.padding(.horizontal, 30)
-            
-            ScrollView(.horizontal, showsIndicators: false, content: {
+//        GeometryReader { geometry in
+            VStack {
                 HStack {
-                    ItemInWallet(txt: "Budget", color: Color.theme.blue, imageName: "budget")
-                    ItemInWallet(txt: "Savings", color: Color.theme.orange, imageName: "savings")
-                    ItemInWallet(txt: "Events", color: Color.theme.blue, imageName: "event")
-                }.padding(.leading, 30)
-            })
-            
-        }
+                    Text("Wallet")
+                        .foregroundColor(Color.theme.text)
+                        .bold()
+                        .font(.title2)
+                    Spacer()
+    //                Button(action: {
+    //                    print("seen al")
+    //                }, label: {
+    //                    Text("See All")
+    //                        .foregroundColor(Color.theme.blue)
+    //                        .fontWeight(.semibold)
+    //                })
+                }.padding(.horizontal, 30)
+                
+                ScrollView(.horizontal, showsIndicators: false, content: {
+                    HStack(spacing: 20) {
+                        ItemInWallet(txt: "Budget", color: Color.theme.blue, imageName: "budget")
+                        ItemInWallet(txt: "Savings", color: Color.theme.orange, imageName: "savings")
+                        ItemInWallet(txt: "Events", color: Color.theme.blue, imageName: "event")
+                    }
+                    .padding(.leading, 30)
+//                    .rotation3DEffect(Angle(degrees:
+//                        Double(geometry.frame(in: .global).minX - 30) / -20
+//                    ), axis: (x: 0, y: 10, z: 0))
+                    
+                })
+                
+            }
+//        }
     }
     
     private var savings: some View {
@@ -78,15 +93,15 @@ extension Planning {
                     .bold()
                     .font(.title2)
                 Spacer()
-                Button(action: {
-                    print("a new saving added")
-                }, label: {
-                    Text("+ Add new")
-                        .foregroundColor(Color.theme.blue)
-                        .fontWeight(.semibold)
-                })
+                NavigationLink(
+                    destination: AddSaving().environmentObject(UserEnv()),
+                    label: {
+                        Text("+ Add new")
+                            .foregroundColor(Color.theme.blue)
+                            .fontWeight(.semibold)
+                    })
             }
-            ForEach(savingss, id: \.self) { saving in
+            ForEach(env.savings, id: \.self) { saving in
                 NavigationLink(
                     destination: SavingsView(saving: saving),
                     label: {
@@ -101,7 +116,7 @@ extension Planning {
                                         .foregroundColor(Color.theme.text)
                                         .bold()
                                     Spacer()
-                                    Text(saving.savedPrice)
+                                    Text("$\(saving.savedPrice)")
                                         .foregroundColor(Color.theme.text)
                                         .bold()
                                 }
@@ -135,48 +150,50 @@ extension Planning {
                     .bold()
                     .font(.title2)
                 Spacer()
-                Button(action: {
-                    print("a new saving added")
-                }, label: {
-                    Text("+ Add new")
-                        .foregroundColor(Color.theme.blue)
-                        .fontWeight(.semibold)
-                })
+                NavigationLink(
+                    destination: AddBudget().environmentObject(UserEnv()),
+                    label: {
+                        Text("+ Add new")
+                            .foregroundColor(Color.theme.blue)
+                            .fontWeight(.semibold)
+                    })
             }
             
-            HStack {
-                // Image
-                Image("food-blue")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-                VStack {
-                    HStack {
-                        Text("Food & Bevweage")
-                            .foregroundColor(Color.theme.text)
-                            .bold()
-                        Spacer()
-                        Text("$125.00")
-                            .foregroundColor(Color.theme.text)
-                            .bold()
-                    }
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .foregroundColor(Color.theme.lessConstructBlue)
-                            .opacity(0.3)
-                            .frame(width: 250, height: 4.0)
-                        Rectangle()
-                            .foregroundColor(Color.theme.blue)
-                            .frame(width: CGFloat(250 * (75.0 / 100)), height: 4.0)
-                    }
-                    .cornerRadius(4.0)
-                }
+            ForEach(env.budgets, id: \.self) { budget in
+                NavigationLink(
+                    destination: SavingsView(saving: Saving(name: budget.name, price: budget.price, percentage: budget.percentage, daysLeft: budget.daysLeft, savedPrice: budget.savedPrice, numberOfSaving: budget.numberOfSaving)),
+                    label: {
+                        HStack {
+                            VStack {
+                                HStack {
+                                    Text(budget.name)
+                                        .foregroundColor(Color.theme.text)
+                                        .bold()
+                                        .padding(.leading, 30)
+                                    Spacer()
+                                    Text("$\(budget.price)")
+                                        .foregroundColor(Color.theme.text)
+                                        .bold()
+                                }
+                                ZStack(alignment: .leading) {
+                                    Rectangle()
+                                        .foregroundColor(Color.theme.lessConstructBlue)
+                                        .opacity(0.3)
+                                        .frame(width: 250, height: 4.0)
+                                    Rectangle()
+                                        .foregroundColor(Color.theme.blue)
+                                        .frame(width: CGFloat(250 * (budget.percentage / 100)), height: 4.0)
+                                }
+                                .cornerRadius(4.0)
+                            }
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 60, height: 50)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
+                })
             }
-            .frame(width: UIScreen.main.bounds.width - 60, height: 50)
-            .padding()
-            .background(Color.white)
-            .cornerRadius(15)
-            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 0)
         }
     }
 }

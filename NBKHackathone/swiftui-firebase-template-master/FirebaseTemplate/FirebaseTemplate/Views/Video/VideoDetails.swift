@@ -11,15 +11,30 @@ import SwiftUI
 struct VideoDetails: View {
     var video: VideoItem
     var body: some View {
-        Link(destination: URL(string: video.url)!) {
-            VStack {
-                RemoteImage(url: video.image)
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(20)
-                    .padding()
-                Text(video.title).bold().font(.title)
-                Text(video.description).padding()
-            }.foregroundColor(.black)
+        ZStack {
+            Color.theme.bg.edgesIgnoringSafeArea(.all)
+            ScrollView {
+                VStack {
+                    RemoteImage(url: video.image)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(20)
+                        .padding()
+                    Text(video.title).bold().font(.title)
+                    Text(video.description).padding()
+                    Link(destination: URL(string: video.url)!){
+                        Text("Go to the video")
+                            .fontWeight(.semibold)
+                            .frame(width: 300, height: 65)
+                            .background(Color.theme.blue)
+                            .cornerRadius(15)
+                            .shadow(color: .theme.blue.opacity(0.3), radius: 10, x: 0, y: 0)
+                            .foregroundColor(.white)
+                            .font(.title3)
+                            
+                    }
+                }.foregroundColor(.black)
+
+            }
         }
     }
 }

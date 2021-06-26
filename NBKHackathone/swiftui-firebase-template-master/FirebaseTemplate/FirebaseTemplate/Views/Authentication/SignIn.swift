@@ -21,10 +21,11 @@ struct SignIn: View {
             SecureField("password", text: $userCredentials.password)
             Button("Sign in"){
                 env.signIn(user: userCredentials) { (uid) in
+                    env.signedIn = true
                     print("Signed in!")
                 } fail: { (error) in
                     alertError = error.debugDescription
-                    alertShown = true 
+                    alertShown = true
                 }
             }
             NavigationLink("Don't have an account?", destination: SignIn())

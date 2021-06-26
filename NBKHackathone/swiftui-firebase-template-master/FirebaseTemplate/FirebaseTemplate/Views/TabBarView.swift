@@ -9,22 +9,26 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @EnvironmentObject var env: FirebaseEnv
     var body: some View {
-        TabView {
-            Home().environmentObject(UserEnv()).tabItem {
-                Image(systemName: "house.fill")
-            }
-            
-            Planning().tabItem {
-                Image(systemName: "creditcard.fill")
-            }
-            
-            ProfileView().environmentObject(FirebaseEnv()).tabItem {
-                Image(systemName: "person.fill")
-            }
-            
-            Video().tabItem {
-                Image(systemName: "video.fill")
+        NavigationView {
+            TabView {
+                Home().environmentObject(UserEnv()).tabItem {
+                    Image(systemName: "house.fill")
+                }
+                
+                Planning().environmentObject(UserEnv()).tabItem {
+                    Image(systemName: "creditcard.fill")
+                }
+                
+                Video().tabItem {
+                    Image(systemName: "video.fill")
+                }
+                
+                ProfileView().environmentObject(FirebaseEnv()).tabItem {
+                    Image(systemName: "person.fill")
+                }
+                
             }
         }
     }

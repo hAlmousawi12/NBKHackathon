@@ -18,25 +18,18 @@ struct VideoItem: Codable, Hashable {
 struct Video: View {
     @EnvironmentObject var itemsEnv: VideoEnv
     var body: some View {
-        //        List(itemsEnv.items, id: \.self) { item in
-        //            VStack {
-        //                Text(item.title)
-        //                Image(systemName: "swift")
-        //            }
-        //        }.onAppear(perform: itemsEnv.loadItems)
-        NavigationView {
-            List(itemsEnv.items, id: \.self) { item in
-                NavigationLink(destination: VideoDetails(video: item)) {
-                    VStack(alignment: .leading) {
-                        RemoteImage(url: item.image)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 200)
-                            .cornerRadius(20)
-                        Text(item.title)
-                    }
+        List(itemsEnv.items, id: \.self) { item in
+            NavigationLink(destination: VideoDetails(video: item)) {
+                VStack(alignment: .leading) {
+                    RemoteImage(url: item.image)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200)
+                        .cornerRadius(20)
+                    Text(item.title)
                 }
-            }.navigationTitle("Videos")
-        }.onAppear(perform: itemsEnv.loadItems)
+            }
+        }.navigationBarHidden(true)
+        .onAppear(perform: itemsEnv.loadItems)
     }
 }
 

@@ -16,24 +16,26 @@ struct SignUp: View {
     @State private var income = ""
     @State private var expense = ""
     var body: some View {
-        Form{
-            TextField("enter your balance", text: $balance)
-                .keyboardType(.numberPad)
-            TextField("enter your income", text: $income)
-                .keyboardType(.numberPad)
-            TextField("enter your expense", text: $expense)
-                .keyboardType(.numberPad)
-            TextField("Fullname", text: $user.fullName).keyboardType(.default)
-            TextField("E-mail", text: $user.email).keyboardType(.emailAddress)
-            SecureField("password", text: $password)
-            Button("Sign up"){
-                self.user.budget.balance = Int(self.balance) ?? 0
-                self.user.budget.expense = Int(self.expense) ?? 0
-                self.user.budget.income = Int(self.income) ?? 0
-                env.signUp(user: user, password: password)
+            Form{
+                TextField("enter your balance", text: $balance)
+                    .keyboardType(.numberPad)
+                TextField("enter your income", text: $income)
+                    .keyboardType(.numberPad)
+                TextField("enter your expense", text: $expense)
+                    .keyboardType(.numberPad)
+                TextField("Fullname", text: $user.fullName).keyboardType(.default)
+                TextField("E-mail", text: $user.email).keyboardType(.emailAddress)
+                SecureField("password", text: $password)
+                Button("Sign up"){
+                    self.user.budget.balance = Int(self.balance) ?? 0
+                    self.user.budget.expense = Int(self.expense) ?? 0
+                    self.user.budget.income = Int(self.income) ?? 0
+                    env.signUp(user: user, password: password)
+                    env.signedIn = true
+                }
             }
-        }
-        .navigationTitle("Sign up")
+            .navigationTitle("Sign up")
+        
     }
 }
 
