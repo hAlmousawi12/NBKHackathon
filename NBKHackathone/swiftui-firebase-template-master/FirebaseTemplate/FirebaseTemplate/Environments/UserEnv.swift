@@ -21,6 +21,7 @@ class UserEnv: ObservableObject {
     @Published var savings: [Saving] = []
     @Published var budgets: [Saving] = []
     @Published var otherUsers: [User] = []
+    @Published var transactions: [Transaction] = []
     let path = "users/\(Networking.getUserId() ?? "")"
     
     func getUser() {
@@ -93,6 +94,21 @@ class UserEnv: ObservableObject {
         }
 
     }
+    
+//    func loadTransactions() {
+//        Networking.getListOf(COLLECTION_NAME: "\(path)/transaction") { (transactions: [Transaction]) in
+//            self.transactions = transactions
+//        }
+//    }
+//
+//    func AddATransaction(item: Transaction) {
+//        Networking.createItem(item, inCollection: "\(path)/transaction") {
+//            self.showAlert(alertType: .success)
+//        } fail: { err in
+//            self.showAlert(alertType: .fail)
+//        }
+//
+//    }
     
     func loadBudgets() {
         Networking.getListOf(COLLECTION_NAME: "\(path)/budgett") { (budgets: [Saving]) in

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AuthenticationView: View {
     var body: some View {
-        NavigationView {
             VStack{
                     NavigationLink(
                         destination: SignIn().environmentObject(FirebaseEnv()),
@@ -21,8 +20,7 @@ struct AuthenticationView: View {
                         label: {Text("Create an account")}
                     )
                 }
-            .navigationTitle("Home")
-        }
+            .navigationBarHidden(true)
     }
 }
 

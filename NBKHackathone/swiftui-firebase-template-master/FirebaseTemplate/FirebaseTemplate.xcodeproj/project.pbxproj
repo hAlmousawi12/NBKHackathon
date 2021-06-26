@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		972796F026846BCB00C0EE3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 972796EF26846BCB00C0EE3F /* GoogleService-Info.plist */; };
+		97438E412687209D0036C3F9 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97438E402687209D0036C3F9 /* PayView.swift */; };
+		97438E43268722430036C3F9 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97438E42268722430036C3F9 /* Transaction.swift */; };
+		97438E4526872A200036C3F9 /* AllTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97438E4426872A200036C3F9 /* AllTransactions.swift */; };
 		974AFAF72685313500261147 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFAF62685313500261147 /* TabBarView.swift */; };
 		974AFAF9268531EB00261147 /* Planning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFAF8268531EB00261147 /* Planning.swift */; };
 		974AFAFB2685323900261147 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AFAFA2685323900261147 /* ProfileView.swift */; };
@@ -81,6 +84,9 @@
 /* Begin PBXFileReference section */
 		9377AE6CE82235456148A2D9 /* Pods-FirebaseTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseTemplate.release.xcconfig"; path = "Target Support Files/Pods-FirebaseTemplate/Pods-FirebaseTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		972796EF26846BCB00C0EE3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		97438E402687209D0036C3F9 /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
+		97438E42268722430036C3F9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		97438E4426872A200036C3F9 /* AllTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactions.swift; sourceTree = "<group>"; };
 		974AFAF62685313500261147 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		974AFAF8268531EB00261147 /* Planning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planning.swift; sourceTree = "<group>"; };
 		974AFAFA2685323900261147 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 			children = (
 				D2C079C625981C260053EDFD /* Home.swift */,
 				977DC60826868C72005D88CB /* AddToWallet.swift */,
+				97438E4426872A200036C3F9 /* AllTransactions.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				974AFAF8268531EB00261147 /* Planning.swift */,
+				97438E402687209D0036C3F9 /* PayView.swift */,
 				977DC60C2686AD4E005D88CB /* AddBudget.swift */,
 				97FA7E6226856ACA00768660 /* SavingsView.swift */,
 				977DC60A26869798005D88CB /* Add saving.swift */,
@@ -424,6 +432,7 @@
 				D2C2705624662F3F005E16A3 /* Item.swift */,
 				97FA7E6426856AE700768660 /* Saving.swift */,
 				B846F0AE26865B390082C6A0 /* AsyncImage.swift */,
+				97438E42268722430036C3F9 /* Transaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -558,11 +567,14 @@
 				974AFAF72685313500261147 /* TabBarView.swift in Sources */,
 				974AFAF9268531EB00261147 /* Planning.swift in Sources */,
 				977DC60B26869798005D88CB /* Add saving.swift in Sources */,
+				97438E412687209D0036C3F9 /* PayView.swift in Sources */,
 				D2C079D0259822090053EDFD /* ListItems.swift in Sources */,
 				B846F0AF26865B390082C6A0 /* AsyncImage.swift in Sources */,
 				977DC60726868739005D88CB /* Wallet.swift in Sources */,
 				D2C079C725981C260053EDFD /* Home.swift in Sources */,
+				97438E4526872A200036C3F9 /* AllTransactions.swift in Sources */,
 				D2C2705724662F3F005E16A3 /* Item.swift in Sources */,
+				97438E43268722430036C3F9 /* Transaction.swift in Sources */,
 				D2C079D9259843330053EDFD /* OptionalState.swift in Sources */,
 				D2C2704B24662C68005E16A3 /* Optional.swift in Sources */,
 				977DC60926868C72005D88CB /* AddToWallet.swift in Sources */,

@@ -24,12 +24,16 @@ struct AddSaving: View {
             VStack(spacing: 30) {
                 
                 TextField("Enter the name", text: $name)
+                    .background(Capsule().fill(Color.white))
                 TextField("Enter the price", text: $price)
                     .keyboardType(.numberPad)
+                    .background(Capsule().fill(Color.white))
                 TextField("Enter the days", text: $daysLeft)
                     .keyboardType(.numberPad)
+                    .background(Capsule().fill(Color.white))
                 TextField("Enter how much you saved", text: $savedPrice)
                     .keyboardType(.numberPad)
+                    .background(Capsule().fill(Color.white))
                 
                 
                         Button("Add to wishlist") {

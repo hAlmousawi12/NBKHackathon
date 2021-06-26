@@ -21,9 +21,9 @@ struct AddToWallet: View {
             VStack(spacing: 30) {
                 TextField("Enter the price", text: $price)
                     .keyboardType(.numberPad)
-                
+                    .background(Capsule().fill(Color.white))
                 TextField("Enter the category", text: $category)
-                
+                    .background(Capsule().fill(Color.white))
                 HStack {
                     Picker(selection: $selection, label: Text("Is it saving or budget"), content: {
                         Text("Saving").tag(1)

@@ -9,20 +9,26 @@
 import SwiftUI
 
 
-struct SignOutButton: View{
+struct SignOutButton: View {
     var env: FirebaseEnv
-    var body: some View{
-        Button("Signout") {
-            env.signOut()
-            env.signedIn = false
+    @State var selection: Int? = nil
+    var body: some View {
+        NavigationLink(destination: AuthenticationView(), tag: 1, selection: $selection) {
+            Button("Sign out") {
+                env.signOut()
+                env.signedIn = false
+                if !env.signedIn {
+                    selection = 1
+                }
+            }
+            .foregroundColor(.white)
+            .font(.title2)
+            .frame(width: 300, height: 50)
+            .background(Color.red)
+            .cornerRadius(15)
+            .shadow(color: .red.opacity(0.3), radius: 10, x: 0, y: 0)
+            .padding()
         }
-        .foregroundColor(.white)
-        .font(.title2)
-        .frame(width: 300, height: 50)
-        .background(Color.theme.red)
-        .cornerRadius(15)
-        .shadow(color: .theme.red.opacity(0.3), radius: 10, x: 0, y: 0)
-        .padding()
     }
 }
 
@@ -191,18 +197,19 @@ extension Home {
                     .bold()
                     .foregroundColor(Color.theme.text)
                 Spacer()
-                //                Button(action: {
-                //                    print("seen all")
-                //                }, label: {
-                //                    Text("See All")
-                //                        .foregroundColor(Color.theme.blue)
-                //                        .fontWeight(.semibold)
-                //                })
+//                NavigationLink(
+//                    destination: AllTransactions(),
+//                    label: {
+//                        Text("See All")
+//                            .foregroundColor(Color.theme.blue)
+//                            .fontWeight(.semibold)
+//                    })
+                
             }
             VStack(spacing: 20) {
-                Transaction(onWhat: "Food & Beverage", time: "Today . Makan Bakso", price: "-$15.00", imageName: "food-orange")
-                Transaction(onWhat: "Medicine", time: "Yesterday . Pharmacy", price: "-$15.50", imageName: "medicine")
-                Transaction(onWhat: "Clothing", time: "2 Weeks ago . Tommy Helfiger", price: "-$55.46", imageName: "clothing")
+                Transactions(onWhat: "Food & Beverage", time: "Today . Makan Bakso", price: "-$15.00", imageName: "food-orange")
+                Transactions(onWhat: "Medicine", time: "Yesterday . Pharmacy", price: "-$15.50", imageName: "medicine")
+                Transactions(onWhat: "Clothing", time: "2 Weeks ago . Tommy Helfiger", price: "-$55.46", imageName: "clothing")
             }
             .padding()
             .background(Color.white)
@@ -212,7 +219,7 @@ extension Home {
     }
 }
 
-struct Transaction: View {
+struct Transactions: View {
     var onWhat: String
     var time: String
     var price: String

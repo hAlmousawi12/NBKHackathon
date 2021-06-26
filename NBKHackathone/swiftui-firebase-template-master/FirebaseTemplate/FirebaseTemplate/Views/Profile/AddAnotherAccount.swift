@@ -22,15 +22,21 @@ struct AddAnotherAccount: View {
         VStack(spacing: 15){
             
             TextField("Enter your full name", text: $newUser.fullName)
+                .background(Capsule().fill(Color.white))
             TextField("enter your E-mail", text: $newUser.email)
+                .background(Capsule().fill(Color.white))
             TextField("Enter your balance", text: $balance)
+                .background(Capsule().fill(Color.white))
                 .keyboardType(.numberPad)
             TextField("Enter your income", text: $income)
+                .background(Capsule().fill(Color.white))
                 .keyboardType(.numberPad)
             TextField("Enter your expense", text: $expense)
                 .keyboardType(.numberPad)
+                .background(Capsule().fill(Color.white))
             
             SecureField("password", text: $password)
+                .background(Capsule().fill(Color.white))
             Button("Add another account") {
                 
                 self.newUser.budget.balance = Int(self.balance) ?? 0

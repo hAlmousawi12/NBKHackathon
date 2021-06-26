@@ -11,7 +11,7 @@ import SwiftUI
 struct TabBarView: View {
     @EnvironmentObject var env: FirebaseEnv
     var body: some View {
-        NavigationView {
+        ZStack {
             TabView {
                 Home().environmentObject(UserEnv()).tabItem {
                     Image(systemName: "house.fill")
@@ -21,7 +21,7 @@ struct TabBarView: View {
                     Image(systemName: "creditcard.fill")
                 }
                 
-                Video().tabItem {
+                Video().environmentObject(ItemsEnv()).tabItem {
                     Image(systemName: "video.fill")
                 }
                 
@@ -30,7 +30,7 @@ struct TabBarView: View {
                 }
                 
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

@@ -24,11 +24,15 @@ struct AddBudget: View {
             VStack(spacing: 30) {
                 
                 TextField("Enter the name", text: $name)
+                    .background(Capsule().fill(Color.white))
                 TextField("Enter the price", text: $price)
+                    .background(Capsule().fill(Color.white))
                     .keyboardType(.numberPad)
                 TextField("Enter the days", text: $daysLeft)
+                    .background(Capsule().fill(Color.white))
                     .keyboardType(.numberPad)
                 TextField("Enter how much you saved", text: $savedPrice)
+                    .background(Capsule().fill(Color.white))
                     .keyboardType(.numberPad)
                 
                 Button("Add to Budgets") {

@@ -14,6 +14,7 @@ struct SignIn: View {
     @EnvironmentObject var env: FirebaseEnv
     @State var alertShown: Bool = false
     @State var alertError: String = ""
+    @State var selection: Int? = nil
     var body: some View {
         ZStack {
             Color(UIColor(red: 246.0/255.0, green: 246.0/255.0, blue: 247.0/255.0, alpha: 1.0))
@@ -37,34 +38,25 @@ struct SignIn: View {
                         }   .padding()
                         .background(Capsule().fill(Color.white))
                     }.padding()
-                            Button("Sign in"){
-                                env.signIn(user: userCredentials) { (uid) in
-                                    env.signedIn = true
-                                    print("Signed in!")
-                
-                                } fail: { (error) in
-                                    alertError = error.debugDescription
-                                    alertShown = true
-                                }
+                NavigationLink(destination: TabBarView()
+                                .environmentObject(FirebaseEnv())
+                                .environmentObject(UserEnv()), tag: 1, selection: $selection) {
+                    Button("Sign in"){
+                        env.signIn(user: userCredentials) { (uid) in
+                            env.signedIn = true
+                            print("Signed in!")
+                            if env.signedIn {
+                                selection = 1
                             }
-                            .modifier(SignInModifier())
+                        } fail: { (error) in
+                            alertError = error?.localizedDescription ?? ""
+                            alertShown = true
+                        }
+                    }
+                    .modifier(SignInModifier())
+                }
+                            
                             NavigationLink("Don't have an account?", destination: SignIn())
-                //            TextField("E-mail", text: $userCredentials.email)
-                //                .textFieldStyle(RoundedBorderTextFieldStyle())
-                //
-                //            SecureField("password", text: $userCredentials.password)
-                //                .textFieldStyle(RoundedBorderTextFieldStyle())
-                //            Button("Sign in"){
-                //                env.signIn(user: userCredentials) { (uid) in
-                //                    env.signedIn = true
-                //                    print("Signed in!")
-                //
-                //                } fail: { (error) in
-                //                    alertError = error.debugDescription
-                //                    alertShown = true
-                //                }
-                //            }
-                //            NavigationLink("Don't have an account?", destination: SignIn())
             }
             .navigationTitle("Sign in")
             .alert(isPresented: $alertShown, content: {

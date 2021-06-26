@@ -15,6 +15,7 @@ struct Planning: View {
             Color.theme.bg.edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
+//                    payOrReceive
                     title
                     Spacer()
                     VStack(spacing: 40) {
@@ -39,6 +40,36 @@ struct Planning: View {
 
 
 extension Planning {
+    
+//    private var payOrReceive: some View {
+//        HStack(spacing: 40) {
+//            NavigationLink(
+//                destination: PayView().environmentObject(UserEnv()),
+//                label: {
+//                    Text("Pay")
+//                        .fontWeight(.semibold)
+//                })
+//            .frame(width: UIScreen.main.bounds.width / 3, height: 150)
+//            .background(Color.theme.blue)
+//            .cornerRadius(15)
+//            .shadow(color: .theme.blue.opacity(0.3), radius: 10, x: 0, y: 0)
+//            .foregroundColor(.white)
+//            .font(.title2)
+//            
+//            
+//            Button("Top Up") {
+//                
+//            }
+//            .frame(width: UIScreen.main.bounds.width / 3, height: 150)
+//            .background(Color.theme.orange)
+//            .cornerRadius(15)
+//            .shadow(color: .theme.orange.opacity(0.3), radius: 10, x: 0, y: 0)
+//            .foregroundColor(.white)
+//            .font(.title2)
+//            
+//            
+//        }.padding(.top)
+//    }
     
     private var title: some View {
         VStack {

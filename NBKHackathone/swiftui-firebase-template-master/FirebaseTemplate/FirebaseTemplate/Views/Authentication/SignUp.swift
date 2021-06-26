@@ -15,26 +15,8 @@ struct SignUp: View {
     @State private var balance = ""
     @State private var income = ""
     @State private var expense = ""
+    @State var selection: Int? = nil
     var body: some View {
-        //            Form{
-        //                TextField("enter your balance", text: $balance)
-        //                    .keyboardType(.numberPad)
-        //                TextField("enter your income", text: $income)
-        //                    .keyboardType(.numberPad)
-        //                TextField("enter your expense", text: $expense)
-        //                    .keyboardType(.numberPad)
-        //                TextField("Fullname", text: $user.fullName).keyboardType(.default)
-        //                TextField("E-mail", text: $user.email).keyboardType(.emailAddress)
-        //                SecureField("password", text: $password)
-        //                Button("Sign up"){
-        //                    self.user.budget.balance = Int(self.balance) ?? 0
-        //                    self.user.budget.expense = Int(self.expense) ?? 0
-        //                    self.user.budget.income = Int(self.income) ?? 0
-        //                    env.signUp(user: user, password: password)
-        //                    env.signedIn = true
-        //                }
-        //            }
-        //            .navigationTitle("Sign up")
         ZStack {
             Color(UIColor(red: 246.0/255.0, green: 246.0/255.0, blue: 247.0/255.0, alpha: 1.0))
                 .ignoresSafeArea(.all)
@@ -61,6 +43,7 @@ struct SignUp: View {
                         .foregroundColor(.secondary)
                     TextField("enter your balance",
                               text: $balance)
+                        .keyboardType(.numberPad)
                 }   .padding()
                 .background(Capsule().fill(Color.white))
                 HStack {
@@ -69,6 +52,7 @@ struct SignUp: View {
                     
                     TextField("income",
                                 text: $income)
+                        .keyboardType(.numberPad)
                 }   .padding()
                 .background(Capsule().fill(Color.white))
                 HStack {
@@ -77,6 +61,7 @@ struct SignUp: View {
                     
                     TextField("expense",
                               text: $expense)
+                        .keyboardType(.numberPad)
                 }.padding()
                 .background(Capsule().fill(Color.white))
                 HStack {
@@ -87,16 +72,24 @@ struct SignUp: View {
                               text: $password)
                 }   .padding()
                 .background(Capsule().fill(Color.white))
-                Button("Sign up"){
-                    self.user.budget.balance = Int(self.balance) ?? 0
-                    self.user.budget.expense = Int(self.expense) ?? 0
-                    self.user.budget.income = Int(self.income) ?? 0
-                    env.signUp(user: user, password: password)
-                    env.signedIn = true
+                NavigationLink(destination: TabBarView()
+                                .environmentObject(FirebaseEnv())
+                                .environmentObject(UserEnv()), tag: 1, selection: $selection) {
+                    Button("Sign up"){
+                        self.user.budget.balance = Int(self.balance) ?? 0
+                        self.user.budget.expense = Int(self.expense) ?? 0
+                        self.user.budget.income = Int(self.income) ?? 0
+                        env.signUp(user: user, password: password)
+                        env.signedIn = true
+                        if env.signedIn {
+                            selection = 1
+                        }
+                    }
+                    .modifier(SignInModifier())
+                    .padding(.top, 30.0)
                 }
-                .modifier(SignInModifier())
-                .padding(.top, 30.0)
-                NavigationLink("Don't have an account?", destination: SignIn())
+                
+                NavigationLink("Already an account?", destination: SignIn())
                     .padding(.top, 10)
                 Spacer()
             }.padding()
