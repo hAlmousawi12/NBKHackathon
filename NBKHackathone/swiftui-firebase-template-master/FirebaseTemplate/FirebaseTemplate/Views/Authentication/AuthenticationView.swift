@@ -15,7 +15,7 @@ struct AuthenticationView: View {
                     NavigationLink(
                         destination: SignIn().environmentObject(FirebaseEnv()),
                         label: {Text("Sign in").modifier(SignInModifier())}
-                    )
+                    ).padding()
                     NavigationLink(
                         destination: SignUp().environmentObject(FirebaseEnv()),
                         label: {Text("Create an account")}
