@@ -43,11 +43,10 @@ struct SignIn: View {
                                 .environmentObject(UserEnv()), tag: 1, selection: $selection) {
                     Button("Sign in"){
                         env.signIn(user: userCredentials) { (uid) in
-                            env.signedIn = true
+                            
                             print("Signed in!")
-                            if env.signedIn {
-                                selection = 1
-                            }
+                            env.signedIn = true
+                            if env.signedIn { selection = 1 }
                         } fail: { (error) in
                             alertError = error?.localizedDescription ?? ""
                             alertShown = true

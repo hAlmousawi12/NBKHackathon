@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SignUp: View {
-    @State var user = User()
+    @State var user = User(fullName: "", email: "")
     @State var password = ""
     @EnvironmentObject var env: FirebaseEnv
     @State private var balance = ""
@@ -25,68 +25,77 @@ struct SignUp: View {
                 HStack {
                     Image(systemName: "person")
                         .foregroundColor(.secondary)
-                    
-                    TextField("FullName",
-                              text: $user.fullName)
-                }   .padding()
+                    TextField("FullName", text: $user.fullName)
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
+                
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundColor(.secondary)
                     
-                    TextField("Email",
-                              text: $user.email)
-                }   .padding()
+                    TextField("Email", text: $user.email)
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
+                
                 HStack {
                     Image(systemName: "person")
                         .foregroundColor(.secondary)
                     TextField("enter your balance",
                               text: $balance)
                         .keyboardType(.numberPad)
-                }   .padding()
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
+                
                 HStack {
                     Image(systemName: "arrow.down")
                         .foregroundColor(.secondary)
                     
-                    TextField("income",
-                                text: $income)
+                    TextField("income", text: $income)
                         .keyboardType(.numberPad)
-                }   .padding()
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
+                
                 HStack {
                     Image(systemName: "arrow.up")
                         .foregroundColor(.secondary)
                     
-                    TextField("expense",
-                              text: $expense)
+                    TextField("expense", text: $expense)
                         .keyboardType(.numberPad)
-                }.padding()
+                    
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
+                
                 HStack {
                     Image(systemName: "lock")
                         .foregroundColor(.secondary)
                     
-                    SecureField("Password",
-                              text: $password)
-                }   .padding()
+                    SecureField("Password", text: $password)
+                }
+                .padding()
                 .background(Capsule().fill(Color.white))
-                NavigationLink(destination: TabBarView().environmentObject(FirebaseEnv()).environmentObject(UserEnv()), tag: 1, selection: $selection) {
+                
+                NavigationLink(destination: TabBarView()
+                                .environmentObject(FirebaseEnv())
+                                .environmentObject(UserEnv()), tag: 1, selection: $selection) {
                     Button("Sign up") {
                         self.user.budget.balance = Int(self.balance) ?? 0
                         self.user.budget.expense = Int(self.expense) ?? 0
                         self.user.budget.income = Int(self.income) ?? 0
                         
-                        env.signUp(user: user, password: password)
-                        if env.signedIn { selection = 1 }
+                        env.signUp(user: user, password: password, success: { (uid) in
+                            env.signedIn = true
+                            if env.signedIn { selection = 1 }
+                        })
                     }
-                    //old:
-//                    .padding(.top, 30.0)
-//                    .modifier(SignInModifier())
                 }
-//                .padding(.top, 30.0)
-//                .modifier(SignInModifier())
+                .modifier(SignInModifier())
+                .padding(.top, 30)
+                
                 
                 NavigationLink("Already an account?", destination: SignIn())
                     .padding(.top, 10)

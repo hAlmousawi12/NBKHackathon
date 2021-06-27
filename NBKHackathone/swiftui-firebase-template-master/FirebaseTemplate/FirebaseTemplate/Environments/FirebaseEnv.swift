@@ -12,9 +12,8 @@ import FirebaseAuth
 class FirebaseEnv: ObservableObject{
     @Published var signedIn: Bool = (FirebaseAuth.Auth.auth().currentUser != nil)
     
-    func signIn(user: SignInCredentials, success: @escaping (String) -> Void,  fail: ((Error?) -> Void)?){
+    func signIn(user: SignInCredentials, success: @escaping (String) -> Void, fail: ((Error?) -> Void)?){
         Networking.signIn(user: user, success: { uid in
-//            self.signedIn = true
             success(uid)
         }, fail: fail)
     }
@@ -24,11 +23,9 @@ class FirebaseEnv: ObservableObject{
         self.signedIn = false
     }
     
-    func signUp(user: User, password: String){
-        Networking.signUp(user: user, password: password) { (uid) in
-//            self.signedIn = true
+    func signUp(user: User, password: String, success: ((String) -> Void)?){
+        Networking.signUp(user: user, password: password, success: success) {
+            fatalError("❌❌\nSomething went wrong\n❌❌\n")
         }
     }
-    
-    
 }

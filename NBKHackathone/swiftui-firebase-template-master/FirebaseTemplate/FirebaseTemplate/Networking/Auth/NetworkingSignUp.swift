@@ -30,11 +30,13 @@ extension Networking{
             guard (error == nil) else {
                 DispatchQueue.main.async{
                     fail?()
+                    print("❌❌❌❌\n")
+                    print(error?.localizedDescription ?? "meow")
                 }
                 return
             }
             print("👱🏻‍♂️ User has been created successfully ...")
-            guard let result = result else {return}
+            guard let result = result else { return }
             let uid = result.user.uid
             DispatchQueue.main.async {
                 print("👱🏻‍♂️ User has been added to DATABASE successfully ...")
